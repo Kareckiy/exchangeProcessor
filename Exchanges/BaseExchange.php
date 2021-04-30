@@ -1,6 +1,6 @@
 <?php
 
-namespace Exchanges;
+namespace ExchangeProcessor\Exchanges;
 
 use GuzzleHttp\Client;
 use Exception;

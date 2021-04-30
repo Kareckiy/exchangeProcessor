@@ -1,5 +1,7 @@
 <?php
 
+namespace ExchangeProcessor;
+
 use Illuminate\Support\ServiceProvider;
 
 class ConfigServiceProvider extends ServiceProvider
