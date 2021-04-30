@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Packages\ExchangeProcessor;
-
 use Illuminate\Support\Facades\App;
 
 class Processor

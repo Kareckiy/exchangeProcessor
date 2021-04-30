@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Packages\ExchangeProcessor\Providers;
-
 use Illuminate\Support\ServiceProvider;
 
 class ConfigServiceProvider extends ServiceProvider

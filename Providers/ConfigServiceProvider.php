@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\ExchangeProcessor\Providers;
+namespace Providers;
 
 use Illuminate\Support\ServiceProvider;
 
