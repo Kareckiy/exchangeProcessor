@@ -9,13 +9,13 @@
             "email": "kareckiyr@mail.ru"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "ExchangeProcessor": "src/"
-        }
-    },
     "require": {
         "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExchangeProcessor\\": "src/"
+        }
     },
     "extra": {
         "laravel": {
