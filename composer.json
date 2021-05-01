@@ -1,0 +1,27 @@
+{
+    "name": "karetskiy/exchange-processor",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ruslan Karetskiy",
+            "email": "kareckiyr@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ExchangeProcessor": "/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ExchangeProcessor\\Providers\\ConfigServiceProvider"
+            ]
+        }
+    }
+}
