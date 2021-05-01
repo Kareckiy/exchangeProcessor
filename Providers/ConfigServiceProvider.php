@@ -2,6 +2,7 @@
 
 namespace ExchangeProcessor\Providers;
 
+use ExchangeProcessor\Processor;
 use Illuminate\Support\ServiceProvider;
 
 class ConfigServiceProvider extends ServiceProvider
@@ -17,5 +18,10 @@ class ConfigServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../Config/exchanges.php', 'exchanges'
         );
+    }
+
+    public function register()
+    {
+        $this->app->bind(Processor::class);
     }
 }
