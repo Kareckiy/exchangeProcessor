@@ -1,8 +1,8 @@
 <?php
 
-namespace ExchangeProcessor\Exchanges;
+namespace ExchangeProcessor\ExchangeClients;
 
-class KrakenExchange extends BaseExchange
+class KrakenExchangeClient extends BaseExchangeClient
 {
     /**
      * Response description:
