@@ -1,13 +1,9 @@
 <?php
 
-namespace ExchangeProcessor\ExchangeClients;
+namespace ExchangeProcessor\Clients;
 
-class KrakenExchangeClient extends BaseExchangeClient
+class KrakenClient extends BaseClient
 {
-    /**
-     * Response description:
-     * Array of array entries(<time>, <open>, <high>, <low>, <close>, <vwap>, <volume>, <count>)
-     */
     public function getPairs(): array
     {
         $url = config(sprintf("exchanges.%s.endpoints.getPairs", $this->name));

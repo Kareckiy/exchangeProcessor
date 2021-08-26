@@ -1,11 +1,11 @@
 <?php
 
-namespace ExchangeProcessor\ExchangeClients;
+namespace ExchangeProcessor\Clients;
 
 use GuzzleHttp\Client;
 use Exception;
 
-abstract class BaseExchangeClient implements ExchangeClientContract
+abstract class BaseClient implements ClientContract
 {
     protected string $apiKey;
 

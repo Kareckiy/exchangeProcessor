@@ -20,4 +20,9 @@ class GetOhlcResponse implements ResponseContract
     {
         return count($this->ohlcs);
     }
+
+    public function getOhlcs(): array
+    {
+        return $this->ohlcs;
+    }
 }

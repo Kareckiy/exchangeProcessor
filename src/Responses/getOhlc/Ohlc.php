@@ -8,30 +8,30 @@ class Ohlc
     private string $time;
     private string $openPrice;
     private string $closePrice;
-    private string $highPrice;
     private string $lowPrice;
+    private string $highPrice;
     private string $midPrice;
     private string $volume;
     private int $count;
 
     public function __construct(
-        string $pairName,
-        string $time,
-        string $openPrice,
-        string $closePrice,
-        string $highPrice,
-        string $lowPrice,
-        string $midPrice,
-        string $volume,
-        int $count
+        string $pairName = '',
+        string $time = '',
+        string $openPrice = '',
+        string $highPrice = '',
+        string $lowPrice = '',
+        string $closePrice = '',
+        string $midPrice = '',
+        string $volume = '',
+        int $count = 0
     )
     {
         $this->pairName = $pairName;
         $this->time = $time;
         $this->openPrice = $openPrice;
-        $this->closePrice = $closePrice;
         $this->highPrice = $highPrice;
         $this->lowPrice = $lowPrice;
+        $this->closePrice = $closePrice;
         $this->midPrice = $midPrice;
         $this->volume = $volume;
         $this->count = $count;

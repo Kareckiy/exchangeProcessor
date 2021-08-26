@@ -1,8 +1,8 @@
 <?php
 
-namespace ExchangeProcessor\ExchangeClients;
+namespace ExchangeProcessor\Clients;
 
-interface ExchangeClientContract
+interface ClientContract
 {
     public function getPairs(): array;
 
