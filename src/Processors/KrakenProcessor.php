@@ -2,18 +2,17 @@
 
 namespace ExchangeProcessor\Processors;
 
-// Сначала вызов клиента
-// Затем сбор ДТО и передача в соответствующий респонс
-// В главном Processor массив exchange должен быть заменен на массив процессоров
-
 use ExchangeProcessor\Clients\KrakenClient;
 use ExchangeProcessor\ResponseBuilders\KrakenResponseBuilder;
 use ExchangeProcessor\ResponseBuilders\Mapping\GetOhlcResponseMapping;
+use ExchangeProcessor\ResponseBuilders\Mapping\GetPairsResponseMapping;
 use ExchangeProcessor\Responses\getOhlc\GetOhlcResponse;
 use ExchangeProcessor\Responses\getPairs\GetPairsResponse;
 
 class KrakenProcessor implements ProcessorContract
 {
+    public const NAME = 'kraken';
+
     private KrakenClient $krakenClient;
     private KrakenResponseBuilder $krakenResponseBuilder;
 
@@ -23,19 +22,28 @@ class KrakenProcessor implements ProcessorContract
         $this->krakenResponseBuilder = $krakenResponseBuilder;
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function getOHLC(string $pair, string $interval, int|string $since): GetOhlcResponse
     {
-        $ohlcPayload = $this->krakenClient->getOHLC();
+        $ohlcPayload = $this->krakenClient->getOHLC($pair, $interval);
 
         $mapping = new GetOhlcResponseMapping(null, 0, 1, 2, 3, 4, 5, 6, 7);
 
         return $this->krakenResponseBuilder->buildGetOhlcResponse($ohlcPayload, $mapping);
     }
 
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \JsonException
+     */
     public function getPairs(): GetPairsResponse
     {
-        $pairs = $this->krakenClient->getPairs();
+        $pairsPayload = $this->krakenClient->getPairs();
 
+        $mapping = new GetPairsResponseMapping('altname', 'wsname', null ,null);
 
+        return $this->krakenResponseBuilder->buildGetPairsResponse($pairsPayload, $mapping);
     }
 }

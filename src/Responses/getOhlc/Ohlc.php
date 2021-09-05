@@ -15,26 +15,26 @@ class Ohlc
     private int $count;
 
     public function __construct(
-        string $pairName = '',
-        string $time = '',
-        string $openPrice = '',
-        string $highPrice = '',
-        string $lowPrice = '',
-        string $closePrice = '',
-        string $midPrice = '',
-        string $volume = '',
-        int $count = 0
+        string $pairName,
+        string $time,
+        string $openPrice,
+        string $highPrice,
+        string $lowPrice,
+        string $closePrice,
+        string $midPrice,
+        string $volume,
+        int $count
     )
     {
-        $this->pairName = $pairName;
-        $this->time = $time;
-        $this->openPrice = $openPrice;
-        $this->highPrice = $highPrice;
-        $this->lowPrice = $lowPrice;
-        $this->closePrice = $closePrice;
-        $this->midPrice = $midPrice;
-        $this->volume = $volume;
-        $this->count = $count;
+        $this->pairName = $pairName ?? '';
+        $this->time = $time ?? '';
+        $this->openPrice = $openPrice ?? '';
+        $this->highPrice = $highPrice ?? '';
+        $this->lowPrice = $lowPrice ?? '';
+        $this->closePrice = $closePrice ?? '';
+        $this->midPrice = $midPrice ?? '';
+        $this->volume = $volume ?? '';
+        $this->count = $count ?? 0;
     }
 
     public function getPairName(): string

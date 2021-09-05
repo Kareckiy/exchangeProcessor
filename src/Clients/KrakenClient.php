@@ -4,6 +4,10 @@ namespace ExchangeProcessor\Clients;
 
 class KrakenClient extends BaseClient
 {
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \JsonException
+     */
     public function getPairs(): array
     {
         $url = config(sprintf("exchanges.%s.endpoints.getPairs", $this->name));
@@ -19,12 +23,13 @@ class KrakenClient extends BaseClient
             ]
         );
 
-        return json_decode($response->getBody(), true);
+        return json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
      * Response description:
      * Array of array entries(<time>, <open>, <high>, <low>, <close>, <vwap>, <volume>, <count>)
+     * @throws \JsonException
      */
     public function getOHLC(string $pair, string $interval = '1', int|string $since = null): array
     {
@@ -47,7 +52,7 @@ class KrakenClient extends BaseClient
             ]
         );
 
-        return json_decode($response->getBody(), true);
+        return json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
     }
 
     private function makeSignature(array $data = [], string $uri = ''): string
