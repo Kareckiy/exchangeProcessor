@@ -1,12 +1,12 @@
 <?php
 
-namespace ExchangeProcessor\Exchanges;
+namespace ExchangeProcessor\Clients;
 
-class KrakenExchange extends BaseExchange
+class KrakenClient extends BaseClient
 {
     /**
-     * Response description:
-     * Array of array entries(<time>, <open>, <high>, <low>, <close>, <vwap>, <volume>, <count>)
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \JsonException
      */
     public function getPairs(): array
     {
@@ -23,12 +23,13 @@ class KrakenExchange extends BaseExchange
             ]
         );
 
-        return json_decode($response->getBody(), true);
+        return json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
      * Response description:
      * Array of array entries(<time>, <open>, <high>, <low>, <close>, <vwap>, <volume>, <count>)
+     * @throws \JsonException
      */
     public function getOHLC(string $pair, string $interval = '1', int|string $since = null): array
     {
@@ -51,7 +52,7 @@ class KrakenExchange extends BaseExchange
             ]
         );
 
-        return json_decode($response->getBody(), true);
+        return json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
     }
 
     private function makeSignature(array $data = [], string $uri = ''): string

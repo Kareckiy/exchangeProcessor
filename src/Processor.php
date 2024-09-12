@@ -6,22 +6,22 @@ use Illuminate\Support\Facades\App;
 
 class Processor
 {
-    private array $exchanges;
+    private array $processors;
 
     private array $methods;
 
-    public function __construct(array $exchanges = [], array $methods = [])
+    public function __construct(array $processors = [], array $methods = [])
     {
-        $this->setExchanges($exchanges);
+        $this->setProcessors($processors);
         $this->setMethods($methods);
     }
 
-    public function setExchanges(array $exchanges = []): self
+    public function setProcessors(array $processors = []): self
     {
-        $this->exchanges = [];
+        $this->processors = [];
 
-        foreach ($exchanges as $exchange) {
-            $this->exchanges[] = App::make($exchange);
+        foreach ($processors as $processor) {
+            $this->processors[] = App::make($processor);
         }
 
         return $this;
@@ -38,11 +38,11 @@ class Processor
     {
         $result = [];
 
-        foreach ($this->exchanges as $exchange) {
-            $exchangeName = $exchange->getName();
+        foreach ($this->processors as $processor) {
+            $exchangeName = $processor->getName();
 
             foreach ($this->methods as $method => $arguments) {
-                $result[$exchangeName][$method] = $exchange->$method(...$arguments);
+                $result[$exchangeName][$method] = $processor->$method(...$arguments);
             }
         }
 
